@@ -1,74 +1,55 @@
 import java.util.Scanner;
 
-//Creamos la clase principal
+// creamos la clase princopal
 public class tandapenales1 {
 
-    //Módulo encargado de validar si el penal es gol o si fue atajado
+    // Módulo que valida si el penal es gol o atajado
     public static boolean validarPenal(int posicionPateador, int posicionArquero) {
-
-        //Si las posiciones del jugador y el arquero son distintas es gol
-        if (posicionPateador != posicionArquero) {
-            return true;
-        } else {
-            return false;
-        }
+        return posicionPateador != posicionArquero;
     }
 
-    public static void main(String[] args) {
+    // Módulo que genera la posición aleatoria del arquero
+    public static int generarPosicionArquero() {
+        return (int)(Math.random() * 3) + 1;
+    }
 
-        //Creamos el Scanner para ingresar datos
-        Scanner sc = new Scanner(System.in);
-
-         //Declaramos variables para el primer penal
-        int posicionPateador1;
-        int posicionArquero1;
-        boolean gol1;
-         //Declaramos varibales para el segundo penal
-        int posicionPateador2;
-        int posicionArquero2;
-        boolean gol2;
-
-        //Mostramos opciones al jugadores
-        System.out.println("=----------------------------------=");
-        System.out.println("Elija el lugar donde patear los penales:");
+    // Módulo que muestra las opciones posibles
+    public static void mostrarOpciones() {
+        System.out.println("Opciones donde patear el penal:");
         System.out.println("1. izquierda");
         System.out.println("2. centro");
         System.out.println("3. derecha");
+    }
 
-        //Guardamos la posición elegida por el pateador 1
-        System.out.print("Elija donde patear el primer penal: ");
-        posicionPateador1 = sc.nextInt();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        //Generamos la posición aleatoria del arquero 1
-        posicionArquero1 = (int)(Math.random() * 3) + 1;
+        int posicionPateador;
+        int posicionArquero;
+        boolean gol;
 
-        //Invocamos el módulo validarPenal para el primer penal
-        gol1 = validarPenal(posicionPateador1, posicionArquero1);
+        for (int jugador = 1; jugador <= 2; jugador++) {
 
-        //Guardamos la posición elegida por el pateador 2
-        System.out.print("Elija donde patear el segundo penal: ");
-        posicionPateador2 = sc.nextInt();
+            System.out.println("=----------------------------------=");
+            System.out.println("Turno del Jugador " + jugador);
 
-        //Generamos la posición aleatoria del arquero 2
-        posicionArquero2 = (int)(Math.random() * 3) + 1;
+            mostrarOpciones();
 
-        //invocamos el modulo validarPenal para el segundo penal
-        gol2 = validarPenal(posicionPateador2, posicionArquero2);
+            System.out.print("Elija donde patear el penal: ");
+            posicionPateador = sc.nextInt();
 
-        //Mostramos resultados del 1er y 2do penal
-        System.out.println("=----------------------------------=");
-        System.out.println("Resultado del 1er penal");
-        System.out.println("Posición del primer pateador : " + posicionPateador1);
-        System.out.println("Posición del arquero : " + posicionArquero1);
-        System.out.println("GOL: " + gol1);
-        System.out.println("=----------------------------------=");
-        System.out.println("Resultado del 2do penal");
-        System.out.println("Posición del segundo pateador : " + posicionPateador2);
-        System.out.println("Posición del arquero : " + posicionArquero2);
-        System.out.println("GOL: " + gol2);
+            posicionArquero = generarPosicionArquero();
+
+            gol = validarPenal(posicionPateador, posicionArquero);
+
+            System.out.println("Resultado del Jugador " + jugador);
+            System.out.println("Posición del pateador: " + posicionPateador);
+            System.out.println("Posición del arquero: " + posicionArquero);
+            System.out.println("GOL: " + gol);
+        }
+
         System.out.println("=----------------------------------=");
 
-        //Cerramos el Scanner
         sc.close();
     }
 }
