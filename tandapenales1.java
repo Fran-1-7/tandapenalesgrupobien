@@ -35,7 +35,7 @@ public class tandapenales1 {
 
             mostrarOpciones();
 
-            System.out.print("Elija donde patear el penal: ");
+            System.out.print("Elija donde patear el penal: Opcion ");
             posicionPateador = sc.nextInt();
 
             posicionArquero = generarPosicionArquero();
