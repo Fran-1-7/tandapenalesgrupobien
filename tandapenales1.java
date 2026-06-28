@@ -35,13 +35,10 @@ public class tandapenales1 {
         //inicio del juego
         System.out.println("====================================");
         System.out.println("--- Inicia la Tanda de Penaltis ---");
-        System.out.println("====================================");
         //bulce Rondas
         for (int ronda = 1; ronda <= rondatotales; ronda++) {
             System.out.println("====================================");
-            System.out.println("====================================");
             System.out.println("--- Ronda numero " + ronda + " ---");
-            System.out.println("===================================="); 
             //bucle para cada turno del jugador
             for (int jugador = 1; jugador <= 2; jugador++){
                 System.out.println("====================================");
