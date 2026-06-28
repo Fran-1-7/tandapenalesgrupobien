@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// creamos la clase princopal
+// Creamos la clase principal
 public class tandapenales1 {
 
     // Módulo que valida si el penal es gol o atajado
@@ -26,72 +26,71 @@ public class tandapenales1 {
 
         int posicionPateador;
         int posicionArquero;
-        int rondatotales = 5;
+        int rondasTotales = 5;
         boolean gol;
 
-        //cotadores
         int golesJugador1 = 0;
         int golesJugador2 = 0;
         //inicio del juego
         System.out.println("====================================");
-        System.out.println("--- Inicia la Tanda de Penaltis ---");
-        //bulce Rondas
-        for (int ronda = 1; ronda <= rondatotales; ronda++) {
+        System.out.println("--- Inicia la Tanda de Penales ---");
+
+        for (int ronda = 1; ronda <= rondasTotales; ronda++) {
             System.out.println("====================================");
             System.out.println("--- Ronda numero " + ronda + " ---");
-            //bucle para cada turno del jugador
-            for (int jugador = 1; jugador <= 2; jugador++){
+
+            for (int jugador = 1; jugador <= 2; jugador++) {
                 System.out.println("====================================");
-                System.out.println("--- turno del jugador " + jugador + " ---");
+                System.out.println("--- Turno del Jugador " + jugador + " ---");
 
-                mostrarOpciones();
+                do {
+                    mostrarOpciones();
+                    System.out.print("Elija donde patear el penal: opcion ");
+                    posicionPateador = sc.nextInt();
 
-                System.out.print("Elija donde patear el penal: Opcion ");
-                posicionPateador = sc.nextInt();
-                //validamos opciones
-                    if (posicionPateador < 1 || posicionPateador > 3){
-                        System.out.print("Pateaste afuera");
-                    } else {
-                            posicionArquero = generarPosicionArquero();
-
-                            gol = validarPenal(posicionPateador, posicionArquero);
-
-                            System.out.println("Resultado del Jugador " + jugador);
-                            System.out.println("Posición del pateador: " + posicionPateador);
-                            System.out.println("Posición del arquero: " + posicionArquero);
-                            System.out.println("GOL: " + gol);
-
-                            //contador de goles para ambos jugadores
-                            if(gol){
-                                if (jugador == 1) {
-                                        golesJugador1 = golesJugador1 + 1;
-                                    } else if (jugador == 2){
-                                        golesJugador2 = golesJugador2 + 1;
-                                }
-                            }
-                        }
+                    if (posicionPateador < 1 || posicionPateador > 3) {
+                        System.out.println("Opcion invalida. Intente nuevamente.");
                     }
+
+                } while (posicionPateador < 1 || posicionPateador > 3);
+
+                posicionArquero = generarPosicionArquero();
+
+                gol = validarPenal(posicionPateador, posicionArquero);
+
+                System.out.println("Resultado del Jugador " + jugador);
+                System.out.println("Posicion del pateador: " + posicionPateador);
+                System.out.println("Posicion del arquero: " + posicionArquero);
+                System.out.println("GOL: " + gol);
+
+                if (gol) {
+                    if (jugador == 1) {
+                        golesJugador1++;
+                    } else {
+                        golesJugador2++;
+                    }
+                }
             }
+        }
 
         System.out.println("====================================");
         System.out.println("          RESULTADO FINAL           ");
         System.out.println("====================================");
         System.out.println("Goles Jugador 1: " + golesJugador1);
         System.out.println("Goles Jugador 2: " + golesJugador2);
-        //Decidimos el Ganador o empate
-            if (golesJugador1 > golesJugador2) {
-            System.out.println("Ha Ganado el Jugador 1");
-            } else if (golesJugador2 > golesJugador1) {
-                System.out.println("Ha Ganado el Jugador 1");
-            } else {
-                System.out.println("Ha terminado en empate");
-            }
+
+        if (golesJugador1 > golesJugador2) {
+            System.out.println("Ha ganado el Jugador 1");
+        } else if (golesJugador2 > golesJugador1) {
+            System.out.println("Ha ganado el Jugador 2");
+        } else {
+            System.out.println("Ha terminado en empate");
+        }
 
         sc.close();
     }
 }
-// Fin del código
-
+//fin del codigo
 /* Realizado por:
 Franco Gonzalez DNI: 47850662
 Matias Ramirez DNI: 46274461
