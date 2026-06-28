@@ -90,7 +90,7 @@ public class tandapenales1 {
         sc.close();
     }
 }
-//Fin del código
+// Fin del código
 
 /* Realizado por:
 Franco Gonzalez DNI: 47850662
